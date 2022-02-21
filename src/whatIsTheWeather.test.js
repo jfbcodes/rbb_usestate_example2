@@ -6,6 +6,8 @@ import '@testing-library/jest-dom'
 import WeatherApp from "./WeatherApp";
 
 const server = setupServer(
+  // TODO: figure out how to get this mock to work
+  // http://api.openweathermap.org/data/2.5/forecast
   rest.get('/greeting', (req, res, ctx) => {
     return res(ctx.json({greeting: 'hello there'}))
   }),
@@ -20,10 +22,12 @@ test('loads and displays greeting', async () => {
 
   expect(screen.getByTestId('heading1')).toHaveTextContent('Input your zipcode');
 
-  // expect(screen.getByText('Input your zipcode')).toBeInTheDocument()
+  const zipInputElement = screen.getByTestId('zipInput')
+  fireEvent.change(zipInputElement, {target: {value: '90046'}})
+  const currentWeatherOutput = screen.getByTestId('currentWeatherOutput')
+
+  expect(currentWeatherOutput).toHaveContent("")
+
 
   // await waitFor(() => screen.getByRole('heading'))
-  //
-  // expect(screen.getByRole('heading')).toHaveTextContent('hello there')
-  // expect(screen.getByRole('button')).toBeDisabled()
 })

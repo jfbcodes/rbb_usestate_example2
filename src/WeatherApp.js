@@ -39,16 +39,17 @@ const WeatherApp = (props) => {
     <>
       <p data-testid={'heading1'}>Input your zipcode:</p>
 
-      <input name={"zip"}
+      <input data-testid={'zipInput'}
+             name={"zip"}
              onChange={(event) => setZip(event.target.value)}
       />
 
 
       <br />
-      <h1>
+      <h1 data-testid={'currentWeatherOutput'}>
         { forecastSuccess && `In ${zip}, the current weather is: ${forecast}`}
       </h1>
-      <h2>
+      <h2 data-testid={'forecastOutput'}>
         { forecastSuccess && `${fahrenheit} °F`}
       </h2>
       <br />
