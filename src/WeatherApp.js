@@ -37,11 +37,12 @@ const WeatherApp = (props) => {
 
   return (
     <>
-      <p>Input your zipcode:</p>
+      <p data-testid={'heading1'}>Input your zipcode:</p>
 
       <input name={"zip"}
              onChange={(event) => setZip(event.target.value)}
       />
+
 
       <br />
       <h1>
